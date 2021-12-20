@@ -1,0 +1,12 @@
+{
+  "name": "mycontactsapi",
+  "version": "1.0.0",
+  "description": "API to store contacts",
+  "main": "src/index.js",
+  "repository": "git@github.com:gabriel-O-C/MyContactsApi.git",
+  "author": "Gabriel Chaves",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
