@@ -14,5 +14,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-promise-executor-return': 'off',
     camelcase: 'off',
+    'consistent-return': 'off',
   },
 };
