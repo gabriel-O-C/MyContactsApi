@@ -16,4 +16,5 @@ router.get('/categories/:id', CategoryController.show);
 router.delete('/categories/:id', CategoryController.delete);
 router.put('/categories/:id', CategoryController.update);
 router.post('/categories', CategoryController.store);
+
 module.exports = router;
