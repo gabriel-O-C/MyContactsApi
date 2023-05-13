@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {string} string - string to be checked
+ * @returns {boolean} - returns if it's a valid UUID
+ */
 function isValidUUID(string) {
   const regex = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
 

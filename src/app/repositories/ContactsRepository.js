@@ -1,5 +1,11 @@
 const db = require('../../database');
 
+/**
+ *
+ * @typedef {{name: string, email: string, phone: string, category_id: string}} User
+ * @param {'ASC' | 'DESC'} orderBy
+ * @returns {Promise<string[][]>}
+ */
 class ContactsRepository {
   async findAll(orderBy = 'ASC') {
     const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
@@ -10,6 +16,12 @@ class ContactsRepository {
     return rows;
   }
 
+  /**
+   *
+   * @param {import("./CategoriesRepository").ID} id
+   * @returns {import("./CategoriesRepository").DBReturn}
+   */
+
   async findById(id) {
     const [row] = await db.query(`SELECT contacts.*, categories.name AS category_name
     FROM contacts
@@ -18,10 +30,21 @@ class ContactsRepository {
     return row;
   }
 
+  /**
+   *
+   * @param {string} email
+   * @returns {import("./CategoriesRepository").DBReturn}
+   */
   async findByEmail(email) {
     const [row] = await db.query('SELECT * FROM contacts WHERE email = $1', [email]);
     return row;
   }
+
+  /**
+   *
+   * @param {import("./CategoriesRepository").ID} id
+   * @returns {Promise<boolean[][]>}
+   */
 
   async delete(id) {
     const deleteOp = await db.query(`
@@ -30,6 +53,10 @@ class ContactsRepository {
     `, [id]);
     return deleteOp;
   }
+  /**
+   * @param {User} user
+   * @returns {import("./CategoriesRepository").DBReturn} user created
+   */
 
   async create({
     name, email, phone, category_id,
@@ -40,6 +67,13 @@ class ContactsRepository {
     `, [name, email, phone, category_id]);
     return row;
   }
+
+  /**
+   *
+   * @param {import("./CategoriesRepository").ID} id
+   * @param {User} User
+   * @returns {import("./CategoriesRepository").DBReturn} user updated
+   */
 
   async update(id, {
     name, email, phone, category_id,
